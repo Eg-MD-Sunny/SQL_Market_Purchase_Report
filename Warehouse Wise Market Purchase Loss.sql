@@ -1,18 +1,18 @@
 ---Warehouse Wise Market Purchase
 
-SELECT pv.Id PVID,
-       pv.Name ProductName,
-       sum(t.costprice) TotalCostAmmount,
-       SUM(tr.SalePrice) as TotalSaleAmmount,
-       (sum(t.costprice)-SUM(tr.SalePrice)) LossAmmount,
-       w.Id WarehouseId,
-       w.Name WarehouseName,
-       c.name CategoryName,
-       CAST(dbo.tobdt(tss.CreatedOn) as DATE) BuyDate,
-       dbo.GetEnumName('CreationEventType',CreationEventType) CreationEventType,
-       count(*) ProductCount,
-       de.Id DesignationId,
-       de.DesignationName
+SELECT pv.Id                                                    [PVID],
+       pv.Name                                                  [ProductName],
+       sum(t.costprice)                                         [TotalCostAmmount],
+       SUM(tr.SalePrice) as                                     [TotalSaleAmmount],
+       (sum(t.costprice)-SUM(tr.SalePrice))                     [LossAmmount],
+       w.Id                                                     [WarehouseId],
+       w.Name                                                   [WarehouseName],
+       c.name                                                   [CategoryName],
+       CAST(dbo.tobdt(tss.CreatedOn) as DATE)                   [BuyDate],
+       dbo.GetEnumName('CreationEventType',CreationEventType)   [CreationEventType],
+       count(*)                                                 [ProductCount],
+       de.Id                                                    [DesignationId],
+       de.DesignationName                                       [DegName]
 
 FROM thingtransaction tss 
 JOIN thingevent te ON tss.id = te.thingtransactionid 
