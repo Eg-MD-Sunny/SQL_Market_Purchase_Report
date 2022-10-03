@@ -23,4 +23,3 @@ and t.ProductVariantId in (
 )
 
 GROUP BY w.MetropolitanAreaId,te.Warehouseid,w.Name, t.productvariantId, pv.Name
---order by 4 desc
